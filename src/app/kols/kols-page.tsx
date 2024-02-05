@@ -31,7 +31,7 @@ const dataFake = [
 
 export default function KolsPage() {
   return (
-    <div className="grid grid-cols-3 gap-10 items-center justify-center px-[400px]">
+    <div className="grid grid-cols-3 gap-10 items-center justify-center">
       {dataFake?.map((kol, index) => {
         return <InfoKol kol={kol} />;
       })}
