@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Popup from "../common/Popup";
 import TypeCard from "./TypeCard";
+import { useModal } from "@/src/hooks/useModal";
 
 const listTypeKol = [
   {
@@ -20,6 +21,7 @@ const listTypeKol = [
 
 const KolGig = () => {
   const [isOpen, setIsopen] = useState(false);
+  const { open, openModal, closeModal } = useModal();
 
   const onOpen = () => {
     setIsopen(true);
@@ -39,6 +41,18 @@ const KolGig = () => {
         Open Case 1 Popup
       </div>
       <Popup title="Register As" isOpen={isOpen} onClose={onClose}>
+        <div className="flex items-center gap-[36px]">
+          {listTypeKol.map((item) => {
+            return (
+              <TypeCard title={item.title} info={item.info} confirm={confirm} />
+            );
+          })}
+        </div>
+      </Popup>
+      <div className="cursor-pointer" onClick={openModal}>
+        Open Case 3 Popup
+      </div>
+      <Popup title="Register As" isOpen={open} onClose={closeModal}>
         <div className="flex items-center gap-[36px]">
           {listTypeKol.map((item) => {
             return (

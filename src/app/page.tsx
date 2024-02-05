@@ -1,4 +1,4 @@
-import KolGig from "@/components/KolGig";
+import KolGig from "@/src/components/KolGig";
 
 export default function Home() {
   return (
