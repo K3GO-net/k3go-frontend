@@ -5,12 +5,10 @@ import { Header } from "../components/shared/Header";
 
 export const DefaultLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
-      <div>
-        <Header />
-      </div>
+    <div className="relative">
+      <Header />
       <div className="container">
-        <div className="p-8">{children}</div>
+        <div className="px-8">{children}</div>
       </div>
     </div>
   );

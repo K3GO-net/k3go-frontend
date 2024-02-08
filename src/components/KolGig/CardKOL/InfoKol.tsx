@@ -1,6 +1,7 @@
 "use client";
 
 import { InfoKols } from "@/src/types/KOL";
+import Link from "next/link";
 
 export const InfoKol = ({ kol }: { kol: InfoKols }) => {
   return (
@@ -17,7 +18,7 @@ export const InfoKol = ({ kol }: { kol: InfoKols }) => {
         <div>Follwers: {kol.followers}</div>
       </div>
       <div>
-        <p>{kol.description}</p>
+        <Link href="/kols/2">{kol.description}</Link>
         <div>
           <p className="flex items-center gap-2">
             <img src="/images/star.svg" />
