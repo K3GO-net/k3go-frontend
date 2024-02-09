@@ -4,7 +4,13 @@ import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import { merge } from "lodash";
-import { WagmiConfig, configureChains, createConfig, mainnet } from "wagmi";
+import {
+  WagmiConfig,
+  configureChains,
+  createConfig,
+  mainnet,
+  useAccount,
+} from "wagmi";
 import {
   arbitrum,
   arbitrumGoerli,

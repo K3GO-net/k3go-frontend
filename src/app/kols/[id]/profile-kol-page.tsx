@@ -26,26 +26,28 @@ export const ProfileKolPage = () => {
   const handleScrollPage = () => {
     const sections = ["about-me", "services", "reviews"];
     const scrollPosition = window.scrollY;
-    let currentSection = sections[0];
+    const headerHeight = headerRef.current.offsetHeight;
 
-    sections.forEach((section, index) => {
-      const element = document.getElementById(section);
+    let currentActiveSection = sections[0];
 
-      if (element) {
-        const elementTop = element.offsetTop;
-        const elementHeight = element.offsetHeight;
-        if (scrollPosition >= elementTop - elementHeight / 2) {
-          currentSection = section;
-        }
+    for (let i = 0; i < sections.length; i++) {
+      const section: any = document.getElementById(sections[i]);
+      const sectionTop = section.offsetTop - headerHeight - 100;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        currentActiveSection = sections[i];
+        break;
       }
-      const bottomOfPage =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
-      if (bottomOfPage) {
-        currentSection = sections[sections.length - 1];
-      }
+    }
 
-      setActiveSection(currentSection);
-    });
+    const bottomOfPage =
+      window.innerHeight + scrollPosition >= document.body.offsetHeight;
+    if (bottomOfPage) {
+      currentActiveSection = sections[sections.length - 1];
+    }
+
+    setActiveSection(currentActiveSection);
   };
 
   useEffect(() => {
@@ -57,13 +59,13 @@ export const ProfileKolPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       <HeaderProfileKol
         isScrolled={isScrolled}
         headerRef={headerRef}
         activeSection={activeSection}
       />
-      <div id="about-me">
+      <div id="about-me" className="pb-4 pt-10">
         <p className="text-[40px] font-bold">About Me</p>
         <p className="w-1/2">
           For more than ten years I've worked as an independent voice actor, and
@@ -76,7 +78,7 @@ export const ProfileKolPage = () => {
           Rise of the Entrepreneur to name a few.
         </p>
       </div>
-      <div id="services">
+      <div id="services" className="pb-4">
         <p className="text-[40px] font-bold">My Gigs</p>
         <div className="flex items-center justify-between gap-4">
           <img src="/example/kols.png" alt="" />
@@ -88,7 +90,7 @@ export const ProfileKolPage = () => {
           <img src="/example/kols.png" alt="" />
         </div>
       </div>
-      <div id="reviews">
+      <div id="reviews" className="pb-4">
         <p className="text-[40px] font-bold">Review</p>
         <div className="flex flex-col gap-10">
           <Reviews />

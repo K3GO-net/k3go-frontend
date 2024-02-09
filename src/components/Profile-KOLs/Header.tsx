@@ -19,7 +19,9 @@ export const HeaderProfileKol = ({
     const section = document.getElementById(sectionId);
     const headerHeight = headerRef.current.offsetHeight;
     if (section) {
-      const sectionTop = section.offsetTop - headerHeight + 10; // Calculate the position to scroll to, accounting for the header
+      const push = sectionId === "about-me" ? 40 : 0;
+
+      const sectionTop = section.offsetTop - headerHeight + push; // Calculate the position to scroll to, accounting for the header
       window.scrollTo({
         top: sectionTop,
         behavior: "smooth",
@@ -30,8 +32,8 @@ export const HeaderProfileKol = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-start py-4",
-        isScrolled ? "sticky top-0 z-50 bg-white gap-4" : ""
+        "flex flex-col items-start",
+        isScrolled ? "sticky top-0 z-50 bg-white gap-4 pt-4" : "py-4"
       )}
       ref={headerRef}
     >

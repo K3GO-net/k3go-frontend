@@ -94,7 +94,7 @@ const dataFake = [
 
 export default function KolsPage() {
   return (
-    <>
+    <div className="py-10">
       <div className="flex items-center justify-between mb-6">
         <Select>
           <SelectTrigger className="max-w-[200px]">
@@ -117,6 +117,6 @@ export default function KolsPage() {
           return <InfoKol kol={kol} />;
         })}
       </div>
-    </>
+    </div>
   );
 }
