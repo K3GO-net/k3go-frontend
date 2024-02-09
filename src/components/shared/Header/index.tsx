@@ -9,6 +9,7 @@ export const Header = () => {
       <div className="flex items-center gap-4">
         <Link href="/">KOL3</Link>
         <Link href="/kols">KOLs</Link>
+        <Link href="/dashboard">Dashboard</Link>
       </div>
       <ButtonConnectCustom />
     </div>
