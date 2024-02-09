@@ -45,13 +45,9 @@ const KolGig = () => {
 
   const confirm = async () => {
     signIn("twitter", {
-      callbackUrl: "/create-gig",
+      callbackUrl: "/create-gig?step=1",
       redirect: false,
     });
-    // console.log({ result });
-    // if (result?.ok) {
-    //   router.push("/create-gig");
-    // }
   };
 
   return (
