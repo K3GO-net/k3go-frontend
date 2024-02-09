@@ -1,3 +1,9 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/src/components/shared/ui/tooltip";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const ButtonConnectCustom = () => {
@@ -53,18 +59,27 @@ export const ButtonConnectCustom = () => {
           );
         } else {
           return (
-            <div
-              onClick={handelOpenModal}
-              className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center md:gap-x-[10px] gap-x-1.5 rounded-full bg-blue-500"
-            >
-              <div className="z-20 md:text-paragraph-1 text-paragraph-2 font-bold text-neutral-dark-1">
-                {account.address.substring(0, 6)}...
-                {account.address.substring(
-                  account.address.length - 4,
-                  account.address.length
-                )}
-              </div>
-            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div
+                    onClick={handelOpenModal}
+                    className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center md:gap-x-[10px] gap-x-1.5 bg-blue-500"
+                  >
+                    <div className="z-20 md:text-paragraph-1 text-paragraph-2 font-bold text-neutral-dark-1">
+                      {account.address.substring(0, 6)}...
+                      {account.address.substring(
+                        account.address.length - 4,
+                        account.address.length
+                      )}
+                    </div>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent className="bg-white !px-7 !rounded-none text-lg">
+                  <a href={`/kols/${account.address}`}>User Profile</a>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           );
         }
       }}

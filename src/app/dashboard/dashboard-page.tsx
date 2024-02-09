@@ -9,32 +9,43 @@ import { cn } from "@/src/lib/utils";
 import { EarningTabs } from "@/src/components/Dashboard/EarningTabs";
 import { OrderPlacedTabs } from "@/src/components/Dashboard/OrderPlacedTabs";
 import { YourShareTabs } from "@/src/components/Dashboard/YourShareTabs";
+import { ButtonConnectCustom } from "@/src/components/shared/Button/ButtonConncectCustom";
 
 export const DashboardPage = () => {
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
+
+  console.log(isConnected);
 
   return (
-    <div className="py-10">
-      <div className="font-bold text-[30px] pb-10">
-        Hello, <span>{renderAddress(address)}</span>
-      </div>
-      <Tabs defaultValue="earning">
-        <TabsList className="flex items-center justify-start gap-10">
-          <TabsTrigger value="earning">Earning</TabsTrigger>
-          <TabsTrigger value="order-placed">Order Placed</TabsTrigger>
-          <TabsTrigger value="your-shares">Your Shares</TabsTrigger>
-        </TabsList>
-        <TabsContent value="earning">
-          <EarningTabs />
-        </TabsContent>
-        <TabsContent value="order-placed">
-          <OrderPlacedTabs />
-        </TabsContent>
-        <TabsContent value="your-shares">
-          <YourShareTabs />
-        </TabsContent>
-      </Tabs>
-    </div>
+    <>
+      {isConnected ? (
+        <div className="py-10">
+          <div className="font-bold text-[30px] pb-10">
+            Hello, <span>{renderAddress(address)}</span>
+          </div>
+          <Tabs defaultValue="earning">
+            <TabsList className="flex items-center justify-start gap-10">
+              <TabsTrigger value="earning">Earning</TabsTrigger>
+              <TabsTrigger value="order-placed">Order Placed</TabsTrigger>
+              <TabsTrigger value="your-shares">Your Shares</TabsTrigger>
+            </TabsList>
+            <TabsContent value="earning">
+              <EarningTabs />
+            </TabsContent>
+            <TabsContent value="order-placed">
+              <OrderPlacedTabs />
+            </TabsContent>
+            <TabsContent value="your-shares">
+              <YourShareTabs />
+            </TabsContent>
+          </Tabs>
+        </div>
+      ) : (
+        <div className="w-full h-screen flex items-center justify-center">
+          <ButtonConnectCustom />
+        </div>
+      )}
+    </>
   );
 };
 
