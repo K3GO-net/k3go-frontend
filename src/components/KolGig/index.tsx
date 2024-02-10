@@ -45,18 +45,14 @@ const KolGig = () => {
 
   const confirm = async () => {
     signIn("twitter", {
-      callbackUrl: "/create-gig",
+      callbackUrl: "/create-gig?step=1",
       redirect: false,
     });
-    // console.log({ result });
-    // if (result?.ok) {
-    //   router.push("/create-gig");
-    // }
   };
 
   return (
     <>
-      <div>{session?.user?.name}</div>
+      {/* <div>{session?.user?.name}</div>
       {session && (
         <div
           className="cursor-pointer"
@@ -66,34 +62,10 @@ const KolGig = () => {
         >
           Sign Out
         </div>
-      )}
-      <div className="cursor-pointer" onClick={onOpen}>
-        Open Case 1 Popup
-      </div>
-      <Popup title="Register As" isOpen={isOpen} onClose={onClose}>
-        <div className="flex items-center gap-[36px]">
-          {listTypeKol.map((item) => {
-            return (
-              <TypeCard title={item.title} info={item.info} confirm={confirm} />
-            );
-          })}
-        </div>
-      </Popup>
-      <div className="cursor-pointer" onClick={openModal}>
-        Open Case 3 Popup
-      </div>
-      <Popup title="Register As" isOpen={open} onClose={closeModal}>
-        <div className="flex items-center gap-[36px]">
-          {listTypeKol.map((item) => {
-            return (
-              <TypeCard title={item.title} info={item.info} confirm={confirm} />
-            );
-          })}
-        </div>
-      </Popup>
+      )} */}
       <Dialog>
-        <DialogTrigger className="text-title-1 bg-black text-white py-[6px] px-[12px] rounded-[4px]">
-          Open
+        <DialogTrigger className="text-title-1 bg-primary text-black py-[6px] px-[12px] rounded-[4px] mb-[10px] cursor-pointer">
+          Open Case 1
         </DialogTrigger>
         <DialogContent className="bg-white py-[15px] px-[36px] flex flex-col items-center">
           <DialogTitle className="text-title-1">Register As</DialogTitle>
@@ -102,6 +74,32 @@ const KolGig = () => {
               {listTypeKol.map((item) => {
                 return (
                   <TypeCard
+                    key={item.title}
+                    title={item.title}
+                    info={item.info}
+                    confirm={confirm}
+                  />
+                );
+              })}
+            </div>
+          </DialogDescription>
+          <DialogFooter>
+            <p>I’ll look around for now</p>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <Dialog>
+        <DialogTrigger className="text-title-1 bg-primary text-black py-[6px] px-[12px] rounded-[4px] mb-[10px] cursor-pointer">
+          Open Case 3
+        </DialogTrigger>
+        <DialogContent className="bg-white py-[15px] px-[36px] flex flex-col items-center">
+          <DialogTitle className="text-title-1">Register As</DialogTitle>
+          <DialogDescription>
+            <div className="flex items-center gap-[36px]">
+              {listTypeKol.map((item) => {
+                return (
+                  <TypeCard
+                    key={item.title}
                     title={item.title}
                     info={item.info}
                     confirm={confirm}
