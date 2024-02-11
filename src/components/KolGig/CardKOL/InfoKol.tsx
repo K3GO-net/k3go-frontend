@@ -1,7 +1,6 @@
 "use client";
 
 import { InfoKols } from "@/src/types/KOL";
-import Link from "next/link";
 
 export const InfoKol = ({ kol }: { kol: InfoKols }) => {
   return (

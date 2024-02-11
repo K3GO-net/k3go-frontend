@@ -14,14 +14,14 @@ import { ButtonConnectCustom } from "@/src/components/shared/Button/ButtonConnce
 export const DashboardPage = () => {
   const { address, isConnected } = useAccount();
 
-  console.log(isConnected);
-
   return (
     <>
       {isConnected ? (
         <div className="py-10">
           <div className="font-bold text-[30px] pb-10">
-            Hello, <span>{renderAddress(address)}</span>
+            <div>
+              Hello, <span>{renderAddress(address)}</span>
+            </div>
           </div>
           <Tabs defaultValue="earning">
             <TabsList className="flex items-center justify-start gap-10">

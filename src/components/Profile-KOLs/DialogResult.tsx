@@ -9,8 +9,6 @@ export const DialogResult = ({
   open: boolean;
   closeModal: () => void;
 }) => {
-  console.log(key);
-
   return (
     <Dialog open={open}>
       <DialogContent className="bg-white">

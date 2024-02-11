@@ -60,7 +60,11 @@ export const HeaderProfileKol = ({
               Buy Key
             </button>
             <button className="text-white font-bold bg-purple-500 px-3 py-1.5">
-              Mess
+              <img
+                src="/images/message.svg"
+                alt="message"
+                className="w-8 h-6"
+              />
             </button>
           </div>
         </div>

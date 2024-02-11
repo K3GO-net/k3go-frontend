@@ -126,8 +126,6 @@ const CreateGigForm = () => {
     router.push("/create-gig?step=3");
   };
 
-  console.log({ formData });
-
   return (
     <form
       onKeyDown={handleKeyDown}
