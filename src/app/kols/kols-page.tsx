@@ -11,7 +11,7 @@ import { SelectValue } from "@radix-ui/react-select";
 
 const dataFake = [
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png", "/example/1.png", "/example/2.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -19,7 +19,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -27,7 +27,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -35,7 +35,16 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
+    avt: "example/avt.png",
+    description:
+      "I will promote crypto project on my Twitter account,I will promote crypto project on my Twitter account",
+    followers: 100,
+    rate: 4.9,
+    socical: "$$$",
+  },
+  {
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -43,7 +52,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -51,7 +60,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -59,7 +68,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -67,7 +76,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,
@@ -75,15 +84,7 @@ const dataFake = [
     socical: "$$$",
   },
   {
-    bg: "/example/kols.png",
-    avt: "example/avt.png",
-    description: "I will promote crypto project on my Twitter account",
-    followers: 100,
-    rate: 4.9,
-    socical: "$$$",
-  },
-  {
-    bg: "/example/kols.png",
+    bg: ["/example/kols.png"],
     avt: "example/avt.png",
     description: "I will promote crypto project on my Twitter account",
     followers: 100,

@@ -64,7 +64,7 @@ export const ButtonConnectCustom = () => {
                 <TooltipTrigger asChild>
                   <div
                     onClick={handelOpenModal}
-                    className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center md:gap-x-[10px] gap-x-1.5 bg-blue-500"
+                    className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center rounded-full text-white md:gap-x-[10px] gap-x-1.5 bg-blue-500"
                   >
                     <div className="z-20 md:text-paragraph-1 text-paragraph-2 font-bold text-neutral-dark-1">
                       {account.address.substring(0, 6)}...
@@ -75,7 +75,7 @@ export const ButtonConnectCustom = () => {
                     </div>
                   </div>
                 </TooltipTrigger>
-                <TooltipContent className="bg-white !px-7 !rounded-none text-lg">
+                <TooltipContent className="bg-white !px-7 !rounded-full text-lg">
                   <a href={`/kols/${account.address}`}>User Profile</a>
                 </TooltipContent>
               </Tooltip>

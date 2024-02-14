@@ -4,8 +4,8 @@ import { useModal } from "@/src/hooks/useModal";
 import { Dialog, DialogContent } from "../shared/ui/dialog";
 import { X } from "lucide-react";
 import { cn } from "@/src/lib/utils";
-import { DialogResult } from "./DialogResult";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import { Button } from "../shared/ui/button";
 
 export const HeaderProfileKol = ({
   isScrolled,
@@ -46,26 +46,23 @@ export const HeaderProfileKol = ({
           <img src="/images/star.svg" alt="start" />
           <p className="text-gray-400">(222)</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <Statistic content="100k" title="Total Followers" />
           <Statistic content="200 ETH" title="Total Volume" />
           <Statistic content="300" title="Owners" />
           <Statistic content="800" title="Shares" />
           <Statistic content="100 ETH" title="Revenue Earn" />
           <div className="flex items-center gap-2">
-            <button
-              className="text-white font-bold bg-purple-500 px-3 py-1.5"
-              onClick={openModal}
-            >
+            <Button className="text-white" onClick={openModal}>
               Buy Key
-            </button>
-            <button className="text-white font-bold bg-purple-500 px-3 py-1.5">
+            </Button>
+            <Button className="text-white">
               <img
                 src="/images/message.svg"
                 alt="message"
                 className="w-8 h-6"
               />
-            </button>
+            </Button>
           </div>
         </div>
         <DialogBuyKey open={open} closeModal={closeModal} />
@@ -80,6 +77,18 @@ export const HeaderProfileKol = ({
           section="about-me"
           menu="About Me"
           activeSection={activeSection === "about-me"}
+          scrollToSection={scrollToSection}
+        />
+        <ItemMenuNav
+          section="tags"
+          menu="Tags"
+          activeSection={activeSection === "tags"}
+          scrollToSection={scrollToSection}
+        />
+        <ItemMenuNav
+          section="partners"
+          menu="Partners"
+          activeSection={activeSection === "partners"}
           scrollToSection={scrollToSection}
         />
         <ItemMenuNav
@@ -214,7 +223,7 @@ const ItemMenuNav = ({
   return (
     <div
       className={cn(
-        "py-2 border-b  text-xl",
+        "py-2 border-b text-xl",
         activeSection
           ? "text-green-400 border-green-400"
           : "text-gray-400 border-transparent"

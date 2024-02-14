@@ -1,7 +1,27 @@
 "use client";
 
 import { HeaderProfileKol } from "@/src/components/Profile-KOLs/Header";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/src/components/shared/ui/carousel";
 import { useEffect, useRef, useState } from "react";
+
+const partners = [
+  {
+    img: "/example/a16z.jpeg",
+    partner: "A16z",
+  },
+  {
+    img: "/example/crypto-logo.png",
+    partner: "Crypto.com",
+  },
+  {
+    img: "/example/c98.png",
+    partner: "Coin98",
+  },
+];
 
 export const ProfileKolPage = () => {
   const headerRef = useRef<any>(null);
@@ -16,15 +36,13 @@ export const ProfileKolPage = () => {
       setIsScrolled(isScrolled);
     };
 
-    // Lắng nghe sự kiện scroll
     window.addEventListener("scroll", handleScroll);
 
-    // Dọn dẹp khi component bị unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleScrollPage = () => {
-    const sections = ["about-me", "services", "reviews"];
+    const sections = ["about-me", "tags", "partners", "services", "reviews"];
     const scrollPosition = window.scrollY;
     const headerHeight = headerRef.current.offsetHeight;
 
@@ -65,9 +83,9 @@ export const ProfileKolPage = () => {
         headerRef={headerRef}
         activeSection={activeSection}
       />
-      <div id="about-me" className="pb-4 pt-10">
-        <p className="text-[40px] font-bold">About Me</p>
-        <p className="w-1/2">
+      <div id="about-me" className="py-10">
+        <p className="text-xl font-bold pb-6">About Me</p>
+        <p className="w-1/2 text-base">
           For more than ten years I've worked as an independent voice actor, and
           the creative director of my own business, JumpStart Video in Boulder,
           CO. We are a US-based team that have become experts in creating video
@@ -78,20 +96,63 @@ export const ProfileKolPage = () => {
           Rise of the Entrepreneur to name a few.
         </p>
       </div>
-      <div id="services" className="pb-4">
-        <p className="text-[40px] font-bold">My Gigs</p>
-        <div className="flex items-center justify-between gap-4">
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
-          <img src="/example/kols.png" alt="" />
+
+      <div id="tags" className="pb-10 flex items-center gap-10">
+        <p className="text-xl font-bold">Tags</p>
+        <p>NFT - DeFi - CEX</p>
+      </div>
+
+      <div id="partners" className="pb-10">
+        <p className="text-xl font-bold pb-6">Top 3 Partners</p>
+        <div className="flex items-center gap-20">
+          {partners.map((partner, index) => (
+            <Partner key={index} img={partner.img} partner={partner.partner} />
+          ))}
         </div>
       </div>
-      <div id="reviews" className="pb-4">
-        <p className="text-[40px] font-bold">Review</p>
+
+      <div id="services" className="pb-10">
+        <p className="text-xl font-bold pb-6">My Gigs</p>
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+            <CarouselItem className="basis-1/5">
+              <img src="/example/kols.png" alt="" />
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      </div>
+      <div id="reviews" className="pb-10">
+        <p className="text-xl font-bold pb-6">Review</p>
         <div className="flex flex-col gap-10">
           <Reviews />
           <Reviews />
@@ -114,7 +175,7 @@ const Reviews = () => {
   return (
     <div className="flex items-start justify-between">
       <div className="flex items-center justify-center gap-4 w-1/3">
-        <div className="w-[100px] h-[100px] rounded-full bg-gray-200 shrink-0"></div>
+        <div className="w-[80px] h-[80px] rounded-full bg-gray-200 shrink-0"></div>
         <div>
           <div className="text-xl font-bold">0x11...3456</div>
           <p className="line-clamp-1">
@@ -134,6 +195,19 @@ const Reviews = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const Partner = ({ img, partner }: { img: string; partner: string }) => {
+  return (
+    <div className="flex items-center gap-2">
+      <img
+        src={img}
+        alt={img}
+        className="flex items-center justify-center rounded-full overflow-hidden w-16 h-16 shrink-0"
+      />
+      <p className="text-base font-medium">{partner}</p>
     </div>
   );
 };

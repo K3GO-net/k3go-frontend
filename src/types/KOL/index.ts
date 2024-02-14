@@ -1,5 +1,5 @@
 export interface InfoKols {
-    bg: string,
+    bg: string[],
     avt: string,
     description: string,
     followers: number,
