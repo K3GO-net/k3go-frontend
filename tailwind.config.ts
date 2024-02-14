@@ -19,6 +19,9 @@ const config: Config = {
         'primary': '#6557f5',
         'secondary': '#d3455b'
       },
+      fontFamily: {
+        exo: ["'Exo 2'", "sans-serif"],
+      },
       fontSize: {
         'title-1': ['20px', '28px'],
         'title-2': ['18px', '24px'],
