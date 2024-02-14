@@ -10,7 +10,7 @@ const CreateGig = () => {
 
   return (
     <div className="w-full flex flex-col items-center mt-[20px]">
-      <h1 className="mb-[20px]">Create your first Gig</h1>
+      <h1 className="mb-[20px]">Create your first Collab</h1>
       {!createGig ? (
         <>
           <div className="w-max border-[1px] border-solid border-black p-[16px] mb-[20px]">
@@ -33,7 +33,7 @@ const CreateGig = () => {
               setCreateGig(true);
             }}
           >
-            Create Gig
+            Create Collab
           </Button>
         </>
       ) : (

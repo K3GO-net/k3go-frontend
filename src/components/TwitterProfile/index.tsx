@@ -37,7 +37,7 @@ const TwitterProfile: FC<TwitterProfileProps> = ({ name, image }) => {
     updateFormData("languages", languages);
     setInputValue("");
     setLanguages([""]);
-    router.push("/create-gig?step=2");
+    router.push("/create-collab?step=2");
   };
 
   return (

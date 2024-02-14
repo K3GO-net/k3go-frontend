@@ -8,7 +8,7 @@ import { Button } from "@/src/components/shared/ui/button";
 import { ButtonConnectCustom } from "@/src/components/shared/Button/ButtonConncectCustom";
 import { useAccount } from "wagmi";
 
-const CreateGigPage = () => {
+const CreateCollabPage = () => {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
 
@@ -49,4 +49,4 @@ const CreateGigPage = () => {
   );
 };
 
-export default CreateGigPage;
+export default CreateCollabPage;

@@ -123,7 +123,7 @@ const CreateGigForm = () => {
     updateFormData("partners", partners);
     updateFormData("price", price);
 
-    router.push("/create-gig?step=3");
+    router.push("/create-collab?step=3");
   };
 
   return (
@@ -192,7 +192,7 @@ const CreateGigForm = () => {
       </div>
       <div className="mb-[20px]">
         <h1 className="font-[600] mb-[10px]">
-          Set Average Price for your Gigs
+          Set Average Price for your Collabs
         </h1>
         <div className="w-[600px]">
           <div>{`Min: ${price[0]}$ - Max: ${price[1]}$`}</div>
@@ -208,7 +208,7 @@ const CreateGigForm = () => {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        <Button type="submit">Create Gig</Button>
+        <Button type="submit">Create Collab</Button>
       </div>
     </form>
   );

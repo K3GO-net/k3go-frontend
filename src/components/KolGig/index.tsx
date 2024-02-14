@@ -1,8 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import Popup from "../common/Popup";
+import React from "react";
 import TypeCard from "./TypeCard";
-import { useModal } from "@/src/hooks/useModal";
 import {
   Dialog,
   DialogContent,
@@ -10,9 +8,8 @@ import {
   DialogFooter,
   DialogTitle,
   DialogTrigger,
-} from "@/src/components/common/Dialog";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+} from "@/src/components/shared/ui/dialog";
+import { signIn } from "next-auth/react";
 
 const listTypeKol = [
   {
@@ -30,45 +27,23 @@ const listTypeKol = [
 ];
 
 const KolGig = () => {
-  const [isOpen, setIsopen] = useState(false);
-  const { open, openModal, closeModal } = useModal();
-  const { data: session } = useSession();
-  const router = useRouter();
-
-  const onOpen = () => {
-    setIsopen(true);
-  };
-
-  const onClose = () => {
-    setIsopen(false);
-  };
-
   const confirm = async () => {
     signIn("twitter", {
-      callbackUrl: "/create-gig?step=1",
+      callbackUrl: "/create-collab?step=1",
       redirect: false,
     });
   };
 
   return (
-    <>
-      {/* <div>{session?.user?.name}</div>
-      {session && (
-        <div
-          className="cursor-pointer"
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Sign Out
-        </div>
-      )} */}
+    <div>
       <Dialog>
         <DialogTrigger className="text-title-1 bg-primary text-black py-[6px] px-[12px] rounded-[4px] mb-[10px] cursor-pointer">
           Open Case 1
         </DialogTrigger>
-        <DialogContent className="bg-white py-[15px] px-[36px] flex flex-col items-center">
-          <DialogTitle className="text-title-1">Register As</DialogTitle>
+        <DialogContent className="bg-white py-[15px] px-[36px] flex flex-col items-center max-w-max">
+          <DialogTitle className="text-title-1 mb-[20px]">
+            Register As
+          </DialogTitle>
           <DialogDescription>
             <div className="flex items-center gap-[36px]">
               {listTypeKol.map((item) => {
@@ -82,38 +57,13 @@ const KolGig = () => {
                 );
               })}
             </div>
-          </DialogDescription>
-          <DialogFooter>
-            <p>I’ll look around for now</p>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-      <Dialog>
-        <DialogTrigger className="text-title-1 bg-primary text-black py-[6px] px-[12px] rounded-[4px] mb-[10px] cursor-pointer">
-          Open Case 3
-        </DialogTrigger>
-        <DialogContent className="bg-white py-[15px] px-[36px] flex flex-col items-center">
-          <DialogTitle className="text-title-1">Register As</DialogTitle>
-          <DialogDescription>
-            <div className="flex items-center gap-[36px]">
-              {listTypeKol.map((item) => {
-                return (
-                  <TypeCard
-                    key={item.title}
-                    title={item.title}
-                    info={item.info}
-                    confirm={confirm}
-                  />
-                );
-              })}
+            <div className="mt-[20px] flex justify-end cursor-pointer">
+              <p>I’ll look around for now</p>
             </div>
           </DialogDescription>
-          <DialogFooter>
-            <p>I’ll look around for now</p>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 };
 
