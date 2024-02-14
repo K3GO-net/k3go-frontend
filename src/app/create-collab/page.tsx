@@ -1,15 +1,15 @@
 import { Metadata } from "next";
-import CreateGigPage from "./create-gig-page";
 import GigFormProvider from "@/src/context/GigForm/provider";
+import CreateCollabPage from "./create-collab-page";
 
 export const metadata: Metadata = {
-  title: "Create Gig | KOL3",
+  title: "Create Collab | KOL3",
 };
 
-export default function CreateGig() {
+export default function CreateCollab() {
   return (
     <GigFormProvider>
-      <CreateGigPage />
+      <CreateCollabPage />
     </GigFormProvider>
   );
 }
