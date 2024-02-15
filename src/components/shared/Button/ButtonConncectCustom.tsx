@@ -37,7 +37,7 @@ export const ButtonConnectCustom = () => {
           return (
             <div
               onClick={handelOpenModal}
-              className="z-50 relative bg-blue-500 flex flex-row justify-center items-center cursor-pointer gap-6 md:px-4 md:py-3 px-2 py-1 rounded-full md:gap-2.5 text-white md:text-paragraph-1 text-paragraph-2 font-bold"
+              className="z-50 relative bg-primary flex flex-row justify-center items-center cursor-pointer gap-6 md:px-4 md:py-3 px-2 py-1 rounded-full md:gap-2.5 text-black md:text-paragraph-1 text-paragraph-2 font-bold"
             >
               {(() => {
                 if (!connected) {
@@ -64,7 +64,7 @@ export const ButtonConnectCustom = () => {
                 <TooltipTrigger asChild>
                   <div
                     onClick={handelOpenModal}
-                    className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center rounded-full text-white md:gap-x-[10px] gap-x-1.5 bg-blue-500"
+                    className="z-50 relative md:px-4 md:py-3 hover:cursor-pointer flex items-center justify-center rounded-full text-black md:gap-x-[10px] gap-x-1.5 bg-primary"
                   >
                     <div className="z-20 md:text-paragraph-1 text-paragraph-2 font-bold text-neutral-dark-1">
                       {account.address.substring(0, 6)}...

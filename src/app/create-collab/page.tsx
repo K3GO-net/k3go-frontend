@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import GigFormProvider from "@/src/context/GigForm/provider";
 import CreateCollabPage from "./create-collab-page";
 
 export const metadata: Metadata = {
@@ -7,9 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default function CreateCollab() {
-  return (
-    <GigFormProvider>
-      <CreateCollabPage />
-    </GigFormProvider>
-  );
+  return <CreateCollabPage />;
 }

@@ -1,8 +1,8 @@
 export interface InfoKols {
-    bg: string[],
-    avt: string,
-    description: string,
-    followers: number,
-    rate: number,
-    socical: string,
+  bg: string[];
+  avt: string;
+  description: string;
+  followers: string;
+  rate: number;
+  socical: string;
 }

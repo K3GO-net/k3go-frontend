@@ -6,6 +6,8 @@ import { X } from "lucide-react";
 import { cn } from "@/src/lib/utils";
 import { useState } from "react";
 import { Button } from "../shared/ui/button";
+import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 
 export const HeaderProfileKol = ({
   isScrolled,
@@ -16,6 +18,9 @@ export const HeaderProfileKol = ({
   headerRef: any;
   activeSection: string;
 }) => {
+  const { data: session } = useSession();
+  const params = useParams();
+  // console.log(params, session);
   const { open, openModal, closeModal } = useModal();
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -41,7 +46,15 @@ export const HeaderProfileKol = ({
     >
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
-          <img src="/example/avt.png" alt="avt" className="w-[60px] h-[60px]" />
+          <img
+            src={
+              params.id === "user"
+                ? session?.user?.image ?? "/example/avt.png"
+                : "/example/avt.png"
+            }
+            alt="avt"
+            className="w-[60px] h-[60px] rounded-full"
+          />
           <div>5</div>
           <img src="/images/star.svg" alt="start" />
           <p className="text-gray-400">(222)</p>
@@ -53,14 +66,14 @@ export const HeaderProfileKol = ({
           <Statistic content="800" title="Shares" />
           <Statistic content="100 ETH" title="Revenue Earn" />
           <div className="flex items-center gap-2">
-            <Button className="text-white" onClick={openModal}>
+            <Button className="" onClick={openModal}>
               Buy Key
             </Button>
-            <Button className="text-white">
+            <Button className="">
               <img
-                src="/images/message.svg"
+                src="/images/message.png"
                 alt="message"
-                className="w-8 h-6"
+                className="w-6 h-6"
               />
             </Button>
           </div>
@@ -80,6 +93,12 @@ export const HeaderProfileKol = ({
           scrollToSection={scrollToSection}
         />
         <ItemMenuNav
+          section="services"
+          menu="Services"
+          activeSection={activeSection === "services"}
+          scrollToSection={scrollToSection}
+        />
+        <ItemMenuNav
           section="tags"
           menu="Tags"
           activeSection={activeSection === "tags"}
@@ -92,9 +111,9 @@ export const HeaderProfileKol = ({
           scrollToSection={scrollToSection}
         />
         <ItemMenuNav
-          section="services"
-          menu="Services"
-          activeSection={activeSection === "services"}
+          section="my-collabs"
+          menu="My Collabs"
+          activeSection={activeSection === "my-collabs"}
           scrollToSection={scrollToSection}
         />
         <ItemMenuNav

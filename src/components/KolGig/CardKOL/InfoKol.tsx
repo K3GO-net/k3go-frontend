@@ -23,7 +23,7 @@ export const InfoKol = ({ kol }: { kol: InfoKols }) => {
                         <img
                           src={bg}
                           alt="bg"
-                          className="w-[400px] h-[300px] object-cover rounded-lg "
+                          className="w-[400px] h-[300px] object-cover rounded-lg"
                         />
                       </CarouselItem>
                     );
@@ -34,7 +34,7 @@ export const InfoKol = ({ kol }: { kol: InfoKols }) => {
                 <img
                   src={kol.avt}
                   alt="avt"
-                  className="roudned-full h-14 w-14 relative"
+                  className="roudned-full h-14 w-14 relative rounded-full"
                 />
                 <div className="absolute -bottom-2 -right-1 bg-blue-400 rounded-full p-1">
                   <Check className="w-5 h-5 text-white" />
@@ -50,9 +50,9 @@ export const InfoKol = ({ kol }: { kol: InfoKols }) => {
             <div className="mt-auto">
               <p className="flex items-center gap-2">
                 <img src="/images/star.svg" />
-                4,9 <span>(30)</span>
+                {`${kol.rate}`} <span>(30)</span>
               </p>
-              From: $$$$
+              From: {`${kol.socical}`}
             </div>
           </div>
         </div>

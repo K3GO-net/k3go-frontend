@@ -41,7 +41,7 @@ const PartnerInput: React.FC<PartnerInputProps> = ({
         return (
           <div
             key={index}
-            className="flex bg-black text-white items-center gap-[6px] px-[14px] py-[8px] rounded-full mr-[10px]"
+            className="flex bg-primary text-black items-center gap-[6px] px-[14px] py-[8px] rounded-full mr-[10px]"
           >
             <p>{item}</p>
             <div
