@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { Header } from "../components/shared/Header";
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
 export const DefaultLayout = ({ children }: { children: ReactNode }) => {
   return (
