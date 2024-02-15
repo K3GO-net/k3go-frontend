@@ -63,6 +63,7 @@ const KolGig = () => {
         <div className="text-title-1 mb-[20px]">Register As</div>
         <X
           onClick={confirm}
+          role="button"
           className="absolute top-[10px] right-[10px] h-5 w-5 cursor-pointer hover:text-primary"
         />
         <div className="flex items-center gap-[36px]">
@@ -84,6 +85,7 @@ const KolGig = () => {
         </Button>
         <div
           onClick={confirm}
+          role="button"
           className="mt-[20px] absolute bottom-[10px] right-[10px] cursor-pointer hover:text-primary"
         >
           <p>I’ll look around for now</p>
