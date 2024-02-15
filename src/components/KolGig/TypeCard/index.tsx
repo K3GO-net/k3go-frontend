@@ -25,7 +25,7 @@ const TypeCard: FC<TypeCardProps> = ({ title, id, info, checked, onClick }) => {
       <p className="text-[16px] text-center mb-[48px]">{info}</p>
       {checked && (
         <div className="w-[30px] h-[30px] bg-primary rounded-full flex items-center justify-center absolute top-0 right-0 translate-x-1/2 -translate-y-1/2">
-          <Check className="w-5 h-5 text-white" />
+          <Check className="w-5 h-5 text-black" />
         </div>
       )}
     </div>
