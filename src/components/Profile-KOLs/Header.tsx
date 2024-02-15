@@ -70,7 +70,7 @@ export const HeaderProfileKol = ({
               Buy Key
             </Button>
             <Button>
-              <a href={`/kols/${id}/contact`} target="_blank">
+              <a href={`/kols/${id}/contact`}>
                 <img
                   src="/images/message.png"
                   alt="message"

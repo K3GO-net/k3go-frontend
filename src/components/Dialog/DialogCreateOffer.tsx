@@ -10,6 +10,7 @@ import {
 } from "../shared/ui/select";
 import { Button } from "../shared/ui/button";
 import { useState } from "react";
+import { DatePicker } from "../shared/ui/datepicker";
 
 export const DialogCreateOffer = ({
   open,
@@ -45,14 +46,14 @@ export const DialogCreateOffer = ({
       <DialogContent className="bg-white">
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between">
-            <p className="text-lg font-semibold">Gig Offer Creation</p>
+            <p className="text-lg font-semibold">Collab Offer Creation</p>
             <button>
               <X />
             </button>
           </div>
 
           <div>
-            <p>Gig Description:</p>
+            <p>Collab Description:</p>
             <Textarea value={description} onChange={handleChangeDescription} />
           </div>
 
@@ -79,6 +80,7 @@ export const DialogCreateOffer = ({
 
           <div>
             <p>Deadline</p>
+            <DatePicker />
           </div>
 
           <Button>
