@@ -165,6 +165,7 @@ const CreateGigForm = () => {
         <div className="w-full flex items-center gap-[20px]">
           {services.map((item) => (
             <CheckboxCustom
+              key={item.id}
               id={item.id}
               title={item.title}
               checked={item.checked}
@@ -178,6 +179,7 @@ const CreateGigForm = () => {
         <div className="w-full grid grid-cols-6 gap-y-[10px]">
           {tags.map((item) => (
             <CheckboxCustom
+              key={item.id}
               id={item.id}
               title={item.title}
               checked={item.checked}

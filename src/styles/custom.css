@@ -10,13 +10,13 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  background: #6557f5;
+  background: #fcfc03;
   border-radius: 50%;
   top: -7px;
 }
 
 .slider .track-1 {
   height: 6px;
-  background: #6557f5;
+  background: #fcfc03;
   border-radius: 6px;
 }

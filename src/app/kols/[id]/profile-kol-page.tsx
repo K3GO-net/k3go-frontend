@@ -6,6 +6,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/src/components/shared/ui/carousel";
+import { useGigFormContext } from "@/src/context/GigForm/context";
+import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const partners = [
@@ -24,7 +26,9 @@ const partners = [
 ];
 
 export const ProfileKolPage = () => {
+  const params = useParams();
   const headerRef = useRef<any>(null);
+  const { formData } = useGigFormContext();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -42,7 +46,14 @@ export const ProfileKolPage = () => {
   }, []);
 
   const handleScrollPage = () => {
-    const sections = ["about-me", "tags", "partners", "services", "reviews"];
+    const sections = [
+      "about-me",
+      "services",
+      "tags",
+      "partners",
+      "my-collabs",
+      "reviews",
+    ];
     const scrollPosition = window.scrollY;
     const headerHeight = headerRef.current.offsetHeight;
 
@@ -86,85 +97,116 @@ export const ProfileKolPage = () => {
       <div id="about-me" className="py-10">
         <p className="text-xl font-bold pb-6">About Me</p>
         <p className="w-1/2 text-base">
-          For more than ten years I've worked as an independent voice actor, and
+          {params.id === "user"
+            ? formData.aboutMe
+            : `For more than ten years I've worked as an independent voice actor, and
           the creative director of my own business, JumpStart Video in Boulder,
           CO. We are a US-based team that have become experts in creating video
           content of many different types and styles for clients all over the
           world! With more than 12,000 gigs successfully completed here on
           Fiverr, our work has been featured on the Fiverr Blog and prominent
           publications like CNBC "Make It", Business Insider, Fast Company, and
-          Rise of the Entrepreneur to name a few.
+          Rise of the Entrepreneur to name a few.`}
         </p>
+      </div>
+
+      <div id="services" className="pb-10 flex items-center gap-10">
+        <p className="text-xl font-bold">Services</p>
+        {params.id === "user" ? (
+          <p>{formData?.services?.map((obj) => obj.title).join(" - ")}</p>
+        ) : (
+          <p>AMA - Spaces - Twitters Posts</p>
+        )}
       </div>
 
       <div id="tags" className="pb-10 flex items-center gap-10">
         <p className="text-xl font-bold">Tags</p>
-        <p>NFT - DeFi - CEX</p>
+        {params.id === "user" ? (
+          <p>{formData?.tags?.map((obj) => obj.title).join(" - ")}</p>
+        ) : (
+          <p>NFT - DeFi - CEX</p>
+        )}
       </div>
 
       <div id="partners" className="pb-10">
         <p className="text-xl font-bold pb-6">Top 3 Partners</p>
         <div className="flex items-center gap-20">
-          {partners.map((partner, index) => (
-            <Partner key={index} img={partner.img} partner={partner.partner} />
-          ))}
+          {params.id === "user"
+            ? formData?.partners?.map((partner, index) => (
+                <Partner key={index} img="/example/eth.png" partner={partner} />
+              ))
+            : partners.map((partner, index) => (
+                <Partner
+                  key={index}
+                  img={partner.img}
+                  partner={partner.partner}
+                />
+              ))}
         </div>
       </div>
 
-      <div id="services" className="pb-10">
-        <p className="text-xl font-bold pb-6">My Gigs</p>
+      <div id="my-collabs" className="pb-10">
+        <p className="text-xl font-bold pb-6">My Collabs</p>
         <Carousel>
-          <CarouselContent>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
-            <CarouselItem className="basis-1/5">
-              <img src="/example/kols.png" alt="" />
-            </CarouselItem>
+          <CarouselContent className="flex items-center">
+            {params.id === "user" &&
+              formData?.photos?.map((photo, index) => (
+                <CarouselItem key={index} className="basis-1/5">
+                  <img src={URL.createObjectURL(photo)} alt="" />
+                </CarouselItem>
+              ))}
+            {params.id !== "user" && (
+              <>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/kols.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/1.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/2.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/4.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/6.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/7.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/8.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/9.png" alt="" />
+                </CarouselItem>
+                <CarouselItem className="basis-1/5">
+                  <img src="/example/10.png" alt="" />
+                </CarouselItem>
+              </>
+            )}
           </CarouselContent>
         </Carousel>
       </div>
       <div id="reviews" className="pb-10">
         <p className="text-xl font-bold pb-6">Review</p>
         <div className="flex flex-col gap-10">
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
-          <Reviews />
+          {params.id !== "user" && (
+            <>
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+              <Reviews />
+            </>
+          )}
         </div>
       </div>
     </div>

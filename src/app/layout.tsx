@@ -5,6 +5,7 @@ import { DefaultLayout } from "../layout/DefaultLayout";
 import Provider from "./provider";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/src/context/SessionProvider";
+import GigFormProvider from "../context/GigForm/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,9 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Provider>
-            <DefaultLayout>{children}</DefaultLayout>
+            <GigFormProvider>
+              <DefaultLayout>{children}</DefaultLayout>
+            </GigFormProvider>
           </Provider>
         </SessionProvider>
       </body>
