@@ -48,10 +48,7 @@ export const DialogReason = ({
             role="button"
             onClick={openInput}
           >
-            <img
-              src="./images/upload-no-bg.png"
-              className="w-[60px] h-[60px]"
-            />
+            <img src="/images/upload-no-bg.png" className="w-[60px] h-[60px]" />
           </div>
           <input
             className="hidden"

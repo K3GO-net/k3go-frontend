@@ -9,36 +9,36 @@ import {
   SelectValue,
 } from "../shared/ui/select";
 import { Button } from "../shared/ui/button";
-import { useState } from "react";
 import { DatePicker } from "../shared/ui/datepicker";
 
 export const DialogCreateOffer = ({
   open,
   closeModal,
+  description,
+  handleChangeDescription,
+  budget,
+  handleChangeBudget,
+  currency,
+  handleSelectCurrency,
+  handleSendMessageOffer,
+  setDate,
+  date,
 }: {
   open: boolean;
   closeModal: () => void;
+  description?: string;
+  handleChangeDescription?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  budget?: number;
+  handleChangeBudget?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  currency?: string;
+  handleSelectCurrency?: (value: string) => void;
+  handleSendMessageOffer?: any;
+  setDate?: any;
+  date?: any;
 }) => {
-  const [budget, setBudget] = useState<number>(0);
-  const [currency, setCurrency] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-
-  const handleChangeBudget = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    if (isNaN(Number(value))) return;
-    const valueAsNumber = Number(value);
-    setBudget(valueAsNumber);
-  };
-
-  const handleSelectCurrency = (value: string) => {
-    setCurrency(value);
-  };
-
-  const handleChangeDescription = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const { value } = e.target;
-    setDescription(value);
+  const handleSubmitOffer = () => {
+    handleSendMessageOffer();
+    closeModal();
   };
 
   return (
@@ -47,7 +47,7 @@ export const DialogCreateOffer = ({
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <p className="text-lg font-semibold">Collab Offer Creation</p>
-            <button>
+            <button onClick={closeModal}>
               <X />
             </button>
           </div>
@@ -80,10 +80,10 @@ export const DialogCreateOffer = ({
 
           <div>
             <p>Deadline</p>
-            <DatePicker />
+            <DatePicker date={date} setDate={setDate} />
           </div>
 
-          <Button>
+          <Button onClick={handleSubmitOffer}>
             Deposit {budget} {currency} to create offer
           </Button>
         </div>

@@ -5,9 +5,13 @@ import { DialogReason } from "./DialogReason";
 export const DialogGigs = ({
   open,
   closeModal,
+  budget,
+  currency,
 }: {
   open: boolean;
   closeModal: () => void;
+  budget?: number;
+  currency?: string;
 }) => {
   const dialogReason = useModal();
 
@@ -23,7 +27,9 @@ export const DialogGigs = ({
           <div className="flex items-start justify-between">
             <div>
               <p className="text-semibold text-base">Details:</p>
-              <p>- 5 ETH for 10,000 followers</p>
+              <p>
+                - {budget} {currency} for 10,000 followers
+              </p>
               <p>- Released after finished the gigs</p>
             </div>
             <div>

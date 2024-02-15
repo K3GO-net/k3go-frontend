@@ -11,8 +11,6 @@ export const SideBarChat = () => {
   const { setActiveConversation, conversations, getUser, activeConversation } =
     useChat();
 
-  console.log(conversations, "conversations");
-
   return (
     <div>
       <ConversationList>

@@ -1,5 +1,6 @@
 "use client";
 
+import CustomChatFeed from "@/src/components/Chat/CustomChatFeed";
 import { SideBarChat } from "@/src/components/Chat/SideBar";
 import { DialogCreateOffer } from "@/src/components/Dialog/DialogCreateOffer";
 import { DialogBuyKey } from "@/src/components/Profile-KOLs/DialogBuyKey";
@@ -10,7 +11,6 @@ import {
   ConversationHeader,
   MessageList,
   MessageInput,
-  Message,
   Avatar,
   MainContainer,
   Sidebar,
@@ -24,12 +24,13 @@ import {
   IStorage,
   MessageContentType,
   UpdateState,
-  useChat,
 } from "@chatscope/use-chat";
 import { ExampleChatService } from "@chatscope/use-chat/dist/examples";
 import { nanoid } from "nanoid";
 
 import { useState } from "react";
+
+import moment from "moment";
 
 export const ContactPage = () => {
   const [messages, setMessages] = useState<any>([]);
@@ -44,6 +45,31 @@ export const ContactPage = () => {
     openModal: openModalCreateOffer,
     closeModal: closeModalCreateOffer,
   } = useModal();
+
+  const [budget, setBudget] = useState<number>(0);
+  const [currency, setCurrency] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [date, setDate] = useState<Date>();
+
+  const deadline = moment(date).fromNow();
+
+  const handleChangeBudget = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (isNaN(Number(value))) return;
+    const valueAsNumber = Number(value);
+    setBudget(valueAsNumber);
+  };
+
+  const handleSelectCurrency = (value: string) => {
+    setCurrency(value);
+  };
+
+  const handleChangeDescription = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { value } = e.target;
+    setDescription(value);
+  };
 
   // Create serviceFactory
   const serviceFactory = (storage: IStorage, updateState: UpdateState) => {
@@ -68,6 +94,19 @@ export const ContactPage = () => {
     setMessages([...messages, newMessage]);
     setInputValue("");
   };
+
+  const handleSendMessageOffer = () => {
+    const newMessage: any = {
+      id: messages.length + 1,
+      type: "offer",
+      budget: budget,
+      currency: currency,
+      description: description,
+      deadline: deadline,
+    };
+    setMessages([...messages, newMessage]);
+  };
+
   return (
     <div className="h-[800px] border border-solid border-[#f0f0f0] rounded-lg overflow-hidden my-10">
       <ChatProvider
@@ -102,17 +141,7 @@ export const ContactPage = () => {
             </ConversationHeader>
             <MessageList>
               {messages.map((message: any) => (
-                <Message
-                  key={message.id}
-                  model={{
-                    message: message.text,
-                    sentTime: "" + new Date(),
-                    sender: message.sender === "me" ? "You" : "John Doe",
-                    direction:
-                      message.sender === "me" ? "outgoing" : "incoming",
-                    position: message.sender === "me" ? "single" : "single",
-                  }}
-                />
+                <CustomChatFeed messages={messages} />
               ))}
             </MessageList>
             <MessageInput
@@ -130,6 +159,15 @@ export const ContactPage = () => {
       <DialogCreateOffer
         open={openCreateOffer}
         closeModal={closeModalCreateOffer}
+        description={description}
+        handleChangeDescription={handleChangeDescription}
+        budget={budget}
+        handleChangeBudget={handleChangeBudget}
+        currency={currency}
+        handleSelectCurrency={handleSelectCurrency}
+        handleSendMessageOffer={handleSendMessageOffer}
+        setDate={setDate}
+        date={date}
       />
     </div>
   );
