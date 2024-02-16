@@ -1,6 +1,7 @@
 import { useModal } from "@/src/hooks/useModal";
 import { Dialog, DialogContent } from "../shared/ui/dialog";
 import { DialogReason } from "./DialogReason";
+import { X } from "lucide-react";
 
 export const DialogGigs = ({
   open,
@@ -22,15 +23,18 @@ export const DialogGigs = ({
   return (
     <Dialog open={open}>
       <DialogContent className="bg-white">
-        <div className="flex flex-col gap-6">
-          <p className="text-2xl font-bold">Gigs</p>
+        <div className="flex flex-col gap-6 relative">
+          <button className="absolute top-0 right-0" onClick={closeModal}>
+            <X className="h-6 w-6 " />
+          </button>
+          <p className="text-2xl font-bold">Collabs</p>
           <div className="flex items-start justify-between">
             <div>
               <p className="text-semibold text-base">Details:</p>
               <p>
                 - {budget} {currency} for 10,000 followers
               </p>
-              <p>- Released after finished the gigs</p>
+              <p>- Released after finished the collabs</p>
             </div>
             <div>
               <p className="text-base italic text-gray-500">Rate me</p>
