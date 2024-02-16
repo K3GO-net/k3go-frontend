@@ -25,6 +25,37 @@ const partners = [
   },
 ];
 
+const reviewDummy = [
+  {
+    address: "0x49..48dn",
+    review:
+      "You has delivered above expectations! Grew a brand new Twitter account 10X organically with followers from the relevant niche. Would recommend to anyone looking to gain starter follower traction on socials.",
+    user: "/example/u1.png",
+    result: "/example/r1.png",
+  },
+  {
+    address: "0xab..12az",
+    review:
+      "Really thankful for your precision marketing on web 3 users , hope for the best in next order . We will try to make it a great news channel",
+    user: "/example/u2.png",
+    result: "/example/r2.png",
+  },
+  {
+    address: "0x49..48dn",
+    review:
+      "My order was delivered sooner than expected with the results i was beyond expectations. Thank you very much. Looking forward to buy more twitter marketing. Highly recommended services A+++",
+    user: "/example/u3.png",
+    result: "/example/r3.png",
+  },
+  {
+    address: "0xab..12az",
+    review:
+      "You did a very good job of increasing Followers. I now have almost a thousand Followers and have made a number of quality contacts with people.",
+    user: "/example/u4.png",
+    result: "/example/r4.png",
+  },
+];
+
 export const ProfileKolPage = () => {
   const params = useParams();
   const headerRef = useRef<any>(null);
@@ -192,45 +223,52 @@ export const ProfileKolPage = () => {
       <div id="reviews" className="pb-10">
         <p className="text-xl font-bold pb-6">Review</p>
         <div className="flex flex-col gap-10">
-          {params.id !== "user" && (
-            <>
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-              <Reviews />
-            </>
-          )}
+          {params.id !== "user" &&
+            reviewDummy.map((item, index) => {
+              return (
+                <Reviews
+                  key={index}
+                  address={item.address}
+                  review={item.review}
+                  user={item.user}
+                  result={item.result}
+                />
+              );
+            })}
         </div>
       </div>
     </div>
   );
 };
 
-const Reviews = () => {
+const Reviews = ({
+  address,
+  review,
+  user,
+  result,
+}: {
+  address: string;
+  review: string;
+  user: string;
+  result: string;
+}) => {
   return (
     <div className="flex items-start justify-between">
-      <div className="flex items-center justify-center gap-4 w-1/3">
-        <div className="w-[80px] h-[80px] rounded-full bg-gray-200 shrink-0"></div>
+      <div className="flex-1 flex items-center gap-4">
+        <img
+          src={user}
+          alt=""
+          className="w-[80px] h-[80px] rounded-full bg-gray-200 shrink-0"
+        />
         <div>
-          <div className="text-xl font-bold">0x11...3456</div>
-          <p className="line-clamp-1">
-            Reviews: Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
-          </p>
+          <div className="text-xl font-bold">{address}</div>
+          <p className="">{`Reviews: ${review}`}</p>
         </div>
       </div>
       <div>
         <p className="text-gray-500 italic text-xl">ordered</p>
         <div className="flex items-center gap-4">
-          <div className="w-20 h-20 bg-gray-200 shrink-0"></div>
+          <img src={result} alt="" className="w-20 h-20 bg-gray-200 shrink-0" />
           <div className="flex justify-between flex-col">
             <p>Promote Project</p>
             <p>From $$</p>

@@ -25,7 +25,7 @@ const listTypeKol = [
   {
     id: "suporter",
     title: "Supporter",
-    info: "Support KOLs and unlock gig revenue share.",
+    info: "Support KOLs and unlock collab revenue share.",
   },
 ];
 
