@@ -87,25 +87,34 @@ export const ContactPage = () => {
 
   const handleSendMessage = () => {
     const newMessage: any = {
-      id: messages.length + 1,
+      id: String(Date.now() + Math.floor(Math.random() * 1000)),
       text: inputValue,
       sender: "me",
     };
-    setMessages([...messages, newMessage]);
+    setMessages((oldValue: any) => {
+      const newValue = [...oldValue]
+      newValue.push(newMessage)
+      return newValue;
+    });
     setInputValue("");
   };
 
   const handleSendMessageOffer = () => {
     const newMessage: any = {
-      id: messages.length + 1,
+      id: String(Date.now() + Math.floor(Math.random() * 1000)),
       type: "offer",
       budget: budget,
       currency: currency,
       description: description,
       deadline: deadline,
     };
-    setMessages([...messages, newMessage]);
+    setMessages((oldValue: any) => {
+      const newValue = [...oldValue]
+        newValue.push(newMessage)
+        return newValue;
+    });
   };
+
 
   return (
     <div className="h-[800px] border border-solid border-[#f0f0f0] rounded-lg overflow-hidden my-10">
@@ -140,9 +149,7 @@ export const ContactPage = () => {
               </ConversationHeader.Actions>
             </ConversationHeader>
             <MessageList>
-              {messages.map((message: any) => (
-                <CustomChatFeed messages={messages} />
-              ))}
+              <CustomChatFeed messages={messages} />
             </MessageList>
             <MessageInput
               value={inputValue}
