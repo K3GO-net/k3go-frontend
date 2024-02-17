@@ -11,7 +11,7 @@ export const EarningTabs = () => {
           <p className="text-lg font-medium">0.5E</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xl font-semibold">Gigs Revenue Share</p>
+          <p className="text-xl font-semibold">Collabs Revenue Share</p>
           <p className="text-lg font-medium">0.5E</p>
         </div>
       </div>
