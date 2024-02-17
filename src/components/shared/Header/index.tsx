@@ -12,8 +12,8 @@ export const Header = () => {
   return (
     <div className="flex items-center justify-between px-8 py-4 bg-black">
       <div className="flex flex-1 items-center gap-8 pr-[40px]">
-        <Link href="/" className="text-[32px] text-primary">
-          KOL3
+        <Link href="/" className="">
+          <img src="/images/logo1.png" alt="" className="w-[80px] h-auto" />
         </Link>
         {/* <Link href="/kols">KOLs</Link>
         <Link href="/dashboard">Dashboard</Link>

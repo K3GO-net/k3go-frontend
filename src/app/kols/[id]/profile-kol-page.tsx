@@ -134,8 +134,8 @@ export const ProfileKolPage = () => {
           the creative director of my own business, JumpStart Video in Boulder,
           CO. We are a US-based team that have become experts in creating video
           content of many different types and styles for clients all over the
-          world! With more than 12,000 gigs successfully completed here on
-          Fiverr, our work has been featured on the Fiverr Blog and prominent
+          world! With more than 12,000 collabs successfully completed here on
+          K3GO, our work has been featured on the K3GO Blog and prominent
           publications like CNBC "Make It", Business Insider, Fast Company, and
           Rise of the Entrepreneur to name a few.`}
         </p>
